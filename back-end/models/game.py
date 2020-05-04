@@ -23,6 +23,7 @@ class Game(Resource):
             game_id = random_id()
         # Merge the game_id (list of characters) into a single string.
         game_id = ''.join(game_id)
-        # Update Redis with that game, and note it as being in round 1.
-        redis.set(f'game:{game_id}', 1)
+        # Update Redis with that game, and note it as being in round 0 (meaning
+        # it hasn't begun).
+        redis.set(f'game:{game_id}', 0)
         return {'game_id': game_id}
