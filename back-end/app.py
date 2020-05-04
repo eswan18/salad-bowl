@@ -2,7 +2,7 @@ import redis
 from flask import Flask, request
 from flask_restful import Api
 
-from models import User, Game, Word
+from resources import User, Game, Word
 
 API_VERSION = '1'
 API_URL_PREFIX = f'/api/v{API_VERSION}'
