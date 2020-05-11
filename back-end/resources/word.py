@@ -1,12 +1,13 @@
 from flask import request
 from flask_restful import Resource
 
-from common.redis_connection import redis_connection as redis
+from redis_connection import get_redis
 
 class Word(Resource):
 
     def post(self):
         '''Submit a new word.'''
+        redis = get_redis()
         data = request.json
         if data is None:
             return {'error': 'No JSON payload'}, 400

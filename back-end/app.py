@@ -7,9 +7,13 @@ from resources import User, Game, Word
 API_VERSION = '1'
 API_URL_PREFIX = f'/api/v{API_VERSION}'
 
+REDIS_URL = 'redis://localhost:6379/0'
+
 app = Flask(__name__)
 api_bp = Blueprint('api', __name__, url_prefix=API_URL_PREFIX)
 api = Api(api_bp)
+
+app.config['REDIS_URL'] = REDIS_URL
 
 api.add_resource(User, '/user/<string:user_id>')
 api.add_resource(Game, '/game', '/game/<string:game_id>')
